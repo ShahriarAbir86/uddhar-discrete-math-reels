@@ -44,5 +44,11 @@ Renders are git-ignored. Copy final deliverables (final MP4, SRT, keyframe conta
 https://drive.google.com/drive/folders/1Mmm98hYrI8cpXG-LNCQqsnltz3N1HcAq
 If Google Drive for desktop is synced locally, copy to that synced folder; otherwise leave files in `renders/` and tell the user what to upload.
 
+## Do not use (legacy references)
+The Google Drive delivery folder also contains older material that belongs to a previous style. It is **not** a reference for this series:
+- `Storyboard স্যাম্পলস/` (storyboard sample images and the storyboard usage guide) — old style; do not imitate.
+- `Big O Time Complexity.m4a` — not a Discrete Mathematics episode voiceover; do not use.
+The Whiteboard Style is a new experiment. Its only style references are the documents in this repository (`series/WHITEBOARD_STYLE.md`, `brand/`, `docs/`). Each episode's voiceover is the file inside its own `episodes/EPXX-*/` folder.
+
 ## Completion report
 List actual created files, actual render specs, actual QA checks performed, unresolved issues, and any user action still required.
