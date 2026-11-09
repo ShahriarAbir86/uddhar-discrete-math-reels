@@ -37,8 +37,17 @@ Per episode, in `episodes/EPxx-topic/inputs/`:
 | 6 | Draft render (`--quality draft`) | `renders/preview.mp4` | Motion + sync review |
 | 7 | Final render (`--quality delivery`, 1080×1920, 60fps) | `renders/final.mp4` | ffprobe checks |
 | 8 | Package + deliver to Drive | `qa/qa_report.md`, SRT, contact sheet | Report only what was actually run |
+| 9 | Run summary (always) | `qa/run_summary.md` + row in `series/RUN_LOG.csv` | See below |
 
 No production (stage 4+) before the user approves stage 3.
+
+## Run summary (every reel)
+Track each reel from first step to delivery:
+- Stage 1: `python tools/run_summary.py start EPxx` (creates `qa/run_state.json` and an empty `qa/run_meta.json`).
+- At each gate: `python tools/run_summary.py mark EPxx "storyboard approved"` (also: build done, draft render, final render).
+- During the work, keep `qa/run_meta.json` current: `style`, `skills`, `plugins`, `tools`, `references` (URLs actually used), `inspiration` (image files used), `notes`.
+- Last step: `python tools/run_summary.py finish EPxx`.
+The summary is measured, not estimated: tokens per model (input, output, thinking, cache) from the Claude Code session logs, wall-clock and active time, final MP4/voiceover specs from ffprobe, keyframe count, plus the skills, tools, styles and references used. `series/RUN_LOG.csv` keeps one row per reel so reels can be compared. Token counts cover every Claude session in the time window, so avoid unrelated chat while a reel is running.
 
 ## Where to see the storyboard
 `episodes/EPxx-topic/storyboard/storyboard.html` — open in a browser (double-click, or `npx hyperframes preview` once built). It shows the single world map, a per-scene card (time range from the real audio, camera viewport, what is drawn, orange highlight, ≤7-word labels, subtitle lines) and the waveform with scene boundaries. `storyboard.md` is the same content as text.

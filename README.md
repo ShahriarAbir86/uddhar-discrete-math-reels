@@ -12,10 +12,10 @@ Production repository for Uddhar's short-form Discrete Mathematics whiteboard ex
 Required: Node.js LTS, Python 3, Git, FFmpeg.
 
 ```bash
-npm install          # installs Playwright
-npm run setup        # downloads Chromium for Playwright
+npm install          # installs HyperFrames (pinned)
+npm run setup        # downloads Chrome Headless Shell for HyperFrames
 pip install -r tools/requirements.txt
-npm run check        # verifies node, python, ffmpeg, ffprobe, Playwright
+npm run check        # verifies node, python, ffmpeg, ffprobe, HyperFrames
 ```
 
 ## Episode workflow
@@ -38,3 +38,6 @@ Per episode, upload into a subfolder named after the episode (e.g. `EP01-mathema
 ## Security
 This repository contains unpublished scripts, voice recordings and brand assets. Keep it private.
 Never commit API keys, access tokens, `.env` files, credentials, student personal data or other secrets.
+
+## Per-reel tracking
+Every reel gets `episodes/EPXX/qa/run_summary.md` (tokens, time, output specs, tools/skills/styles/references used) and a row in `series/RUN_LOG.csv`. See `series/PRODUCTION_PIPELINE.md`.

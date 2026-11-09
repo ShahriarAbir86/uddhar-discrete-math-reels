@@ -13,7 +13,7 @@ command -v node    >/dev/null || { echo "Node.js missing"; exit 1; }
 [ -n "$PY" ]                  || { echo "Python 3 missing"; exit 1; }
 command -v ffmpeg  >/dev/null || { echo "FFmpeg missing"; exit 1; }
 command -v ffprobe >/dev/null || { echo "ffprobe missing"; exit 1; }
-[ -d node_modules/playwright ] || { echo "Playwright missing — run: npm install && npm run setup"; exit 1; }
+[ -x node_modules/.bin/hyperframes ] || { echo "HyperFrames missing - run: npm install && npm run setup"; exit 1; }
 
 echo "node    $(node --version)"
 echo "python  $($PY --version 2>&1)  ($PY)"

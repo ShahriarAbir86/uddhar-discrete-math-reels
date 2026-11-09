@@ -37,7 +37,7 @@ Do the work end-to-end where tools and runtime allow. Do not stop after giving a
 - If a tool/runtime cannot complete a step, state exactly what remains and provide the source files.
 
 ## Workflow, skills and models
-Follow `series/PRODUCTION_PIPELINE.md`. Render with HyperFrames + GSAP using the skills in `.claude/skills/` (see `series/SKILLS_REGISTRY.md`); do not hand-roll capture scripts or re-derive motion rules. Use Sonnet 5.5 for planning/storyboard/QA/delivery. Stop at the storyboard and wait for the user's approval before building. Audio is minimal: the user's ElevenLabs voiceover only (no TTS, music or SFX unless asked). Do not run `npx hyperframes events`.
+Follow `series/PRODUCTION_PIPELINE.md`. Render with HyperFrames + GSAP using the skills in `.claude/skills/` (see `series/SKILLS_REGISTRY.md`); do not hand-roll capture scripts or re-derive motion rules. Use Sonnet 5.5 for planning/storyboard/QA/delivery. Stop at the storyboard and wait for the user's approval before building. Audio is minimal: the user's ElevenLabs voiceover only (no TTS, music or SFX unless asked). Run HyperFrames only through `tools/hf.sh` (telemetry off); never run `npx hyperframes events`. Track every reel with `tools/run_summary.py` (start, mark at gates, finish) and deliver `qa/run_summary.md` with the other files.
 
 ## Output folder
 Use `episodes/EPXX-short-topic-name/`. Never overwrite another episode. Keep source and output files.
