@@ -1,0 +1,27 @@
+# Generated renders (final MP4s go to the Google Drive delivery folder, not Git)
+episodes/*/renders/**
+!episodes/*/renders/.gitkeep
+*.mp4
+*.mov
+*.png.tmp
+frames/
+
+# Dependencies / caches
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets — never commit
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+token*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

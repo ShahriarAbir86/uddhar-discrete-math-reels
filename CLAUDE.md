@@ -39,5 +39,10 @@ Do the work end-to-end where tools and runtime allow. Do not stop after giving a
 ## Output folder
 Use `episodes/EPXX-short-topic-name/`. Never overwrite another episode. Keep source and output files.
 
+## Delivery
+Renders are git-ignored. Copy final deliverables (final MP4, SRT, keyframe contact sheet, storyboard, QA report) into the Google Drive delivery folder, in a subfolder named after the episode:
+https://drive.google.com/drive/folders/1Mmm98hYrI8cpXG-LNCQqsnltz3N1HcAq
+If Google Drive for desktop is synced locally, copy to that synced folder; otherwise leave files in `renders/` and tell the user what to upload.
+
 ## Completion report
 List actual created files, actual render specs, actual QA checks performed, unresolved issues, and any user action still required.

@@ -1,0 +1,12 @@
+{
+  "name": "uddhar-discrete-math-reels",
+  "private": true,
+  "description": "Uddhar Discrete Mathematics whiteboard reels — deterministic HTML/SVG animation rendered with Playwright + FFmpeg.",
+  "scripts": {
+    "setup": "npx playwright install chromium",
+    "check": "bash tools/render.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}
