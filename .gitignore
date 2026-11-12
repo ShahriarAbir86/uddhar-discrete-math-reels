@@ -25,3 +25,12 @@ token*.json
 Thumbs.db
 desktop.ini
 .vscode/
+
+# HyperFrames working artifacts and duplicated source audio
+**/.hyperframes/
+episodes/*/src/assets/voiceover.mp3
+episodes/*/qa/render_*.log
+episodes/*/qa/render_*.time
+episodes/*/qa/check.json
+episodes/*/qa/check.err
+episodes/*/qa/align.log

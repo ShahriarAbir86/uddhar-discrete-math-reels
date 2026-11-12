@@ -15,3 +15,8 @@ Not copied (kept in the local dump for reference): awesome-claude-video-skills (
 CLI: npm package `hyperframes`, pinned to 0.9.26 in `package.json` (Apache-2.0). Chrome Headless Shell installed via `npx hyperframes browser ensure`. Tested 2026-11-09: scaffold, lint and a 10 s draft render completed in 15 s (h264).
 Always run it through `tools/hf.sh`, which turns telemetry and update checks off (`HYPERFRAMES_NO_TELEMETRY`, `DO_NOT_TRACK`, `HYPERFRAMES_NO_UPDATE_CHECK`).
 Not installed (optional): whisper-cpp (transcription; `doctor` lists the build steps), Docker (cloud/containers), Kokoro TTS and MusicGen (not used: voiceover is supplied, no music).
+
+## Libraries bundled with episodes
+- GSAP 3.15.0 (`assets/vendor/gsap.min.js`): GreenSock standard no-charge license (https://gsap.com/standard-license/); the npm package ships no LICENSE file.
+- Hind Siliguri and Plus Jakarta Sans woff2 files with their OFL license texts (`assets/fonts/`), from the @fontsource packages.
+- Reference-only downloads (not installed, not executed) listed in `skills-library/INDEX_agentskillshub_claude-video-skills.txt` (474 repos) plus a relevant subset cloned beside it.

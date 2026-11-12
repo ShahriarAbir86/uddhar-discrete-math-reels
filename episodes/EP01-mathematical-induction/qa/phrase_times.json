@@ -1,0 +1,310 @@
+[
+ {
+  "scene": 1,
+  "sentence": 0,
+  "text": "একটা ডমিনো পড়ে গেলে কী হয়?",
+  "start": 0.0,
+  "end": 2.54
+ },
+ {
+  "scene": 1,
+  "sentence": 1,
+  "text": "পাশের ডমিনোটাও পড়ে যায়।",
+  "start": 3.46,
+  "end": 4.7
+ },
+ {
+  "scene": 1,
+  "sentence": 2,
+  "text": "তারপর তার পাশেরটা।",
+  "start": 5.08,
+  "end": 6.32
+ },
+ {
+  "scene": 1,
+  "sentence": 3,
+  "text": "এভাবে একটা ডমিনো থেকেই পড়ে যেতে পারে পুরো সারি।",
+  "start": 6.73,
+  "end": 9.88
+ },
+ {
+  "scene": 1,
+  "sentence": 4,
+  "text": "কিন্তু জানো কি?",
+  "start": 10.22,
+  "end": 10.97
+ },
+ {
+  "scene": 1,
+  "sentence": 5,
+  "text": "এই সাধারণ ঘটনাটার মধ্যেই লুকিয়ে আছে Mathematics-এর একটা powerful proof technique?",
+  "start": 11.1,
+  "end": 15.89
+ },
+ {
+  "scene": 1,
+  "sentence": 6,
+  "text": "এর নাম Mathematical Induction।",
+  "start": 16.34,
+  "end": 18.51
+ },
+ {
+  "scene": 2,
+  "sentence": 7,
+  "text": "ধরো,",
+  "start": 18.99,
+  "end": 19.22
+ },
+ {
+  "scene": 2,
+  "sentence": 7,
+  "text": "আমাদের প্রমাণ করতে হবে একটা mathematical statement সব positive integer-এর জন্য সত্য।",
+  "start": 19.22,
+  "end": 24.63
+ },
+ {
+  "scene": 2,
+  "sentence": 8,
+  "text": "প্রথমে নিশ্চিত করতে হবে,",
+  "start": 25.3,
+  "end": 26.55
+ },
+ {
+  "scene": 2,
+  "sentence": 8,
+  "text": "statement-টা প্রথম সংখ্যার জন্য সত্য।",
+  "start": 26.8,
+  "end": 28.87
+ },
+ {
+  "scene": 2,
+  "sentence": 9,
+  "text": "একেই বলে Base Case।",
+  "start": 29.34,
+  "end": 30.76
+ },
+ {
+  "scene": 3,
+  "sentence": 10,
+  "text": "কিন্তু শুধু প্রথম ধাপ সত্য হলেই হবে না।",
+  "start": 31.18,
+  "end": 33.29
+ },
+ {
+  "scene": 3,
+  "sentence": 11,
+  "text": "আমাদের এটাও প্রমাণ করতে হবে,",
+  "start": 33.74,
+  "end": 35.25
+ },
+ {
+  "scene": 3,
+  "sentence": 11,
+  "text": "যেকোনো একটা ধাপ সত্য হলে তার পরের ধাপটাও সত্য হবে।",
+  "start": 35.6,
+  "end": 39.03
+ },
+ {
+  "scene": 3,
+  "sentence": 12,
+  "text": "এটাকেই বলে Inductive Step।",
+  "start": 39.49,
+  "end": 41.23
+ },
+ {
+  "scene": 4,
+  "sentence": 13,
+  "text": "এবার একটা mathematical example দেখি।",
+  "start": 41.6,
+  "end": 44.81
+ },
+ {
+  "scene": 4,
+  "sentence": 14,
+  "text": "আমরা প্রমাণ করব,",
+  "start": 45.15,
+  "end": 46.19
+ },
+ {
+  "scene": 4,
+  "sentence": 14,
+  "text": "এক থেকে n পর্যন্ত সব positive integer-এর যোগফল সমান n into n plus one,",
+  "start": 46.19,
+  "end": 50.67
+ },
+ {
+  "scene": 4,
+  "sentence": 14,
+  "text": "divided by two।",
+  "start": 50.83,
+  "end": 51.6
+ },
+ {
+  "scene": 5,
+  "sentence": 15,
+  "text": "প্রথমে Base Case।",
+  "start": 52.08,
+  "end": 53.15
+ },
+ {
+  "scene": 5,
+  "sentence": 16,
+  "text": "n equals one বসালে,",
+  "start": 53.58,
+  "end": 54.81
+ },
+ {
+  "scene": 5,
+  "sentence": 16,
+  "text": "বামপাশে পাই one,",
+  "start": 54.98,
+  "end": 55.98
+ },
+ {
+  "scene": 5,
+  "sentence": 16,
+  "text": "আর ডানপাশেও one।",
+  "start": 56.21,
+  "end": 57.14
+ },
+ {
+  "scene": 5,
+  "sentence": 17,
+  "text": "তাহলে Base Case সত্য।",
+  "start": 57.49,
+  "end": 58.86
+ },
+ {
+  "scene": 6,
+  "sentence": 18,
+  "text": "এবার Inductive Step।",
+  "start": 59.26,
+  "end": 60.48
+ },
+ {
+  "scene": 6,
+  "sentence": 19,
+  "text": "ধরে নিই,",
+  "start": 60.96,
+  "end": 61.4
+ },
+ {
+  "scene": 6,
+  "sentence": 19,
+  "text": "n equals k পর্যন্ত যোগফল সমান k into k plus one,",
+  "start": 61.72,
+  "end": 65.3
+ },
+ {
+  "scene": 6,
+  "sentence": 19,
+  "text": "divided by two।",
+  "start": 65.3,
+  "end": 66.51
+ },
+ {
+  "scene": 6,
+  "sentence": 20,
+  "text": "এখন দুই পাশে k plus one যোগ করি।",
+  "start": 67.14,
+  "end": 69.32
+ },
+ {
+  "scene": 6,
+  "sentence": 21,
+  "text": "Simplify করলে পাই,",
+  "start": 69.72,
+  "end": 70.78
+ },
+ {
+  "scene": 6,
+  "sentence": 21,
+  "text": "k plus one into k plus two,",
+  "start": 71.1,
+  "end": 72.98
+ },
+ {
+  "scene": 6,
+  "sentence": 21,
+  "text": "divided by two।",
+  "start": 73.12,
+  "end": 73.92
+ },
+ {
+  "scene": 6,
+  "sentence": 22,
+  "text": "অর্থাৎ,",
+  "start": 74.29,
+  "end": 74.71
+ },
+ {
+  "scene": 6,
+  "sentence": 22,
+  "text": "পরের ধাপটাও সত্য।",
+  "start": 74.92,
+  "end": 76.06
+ },
+ {
+  "scene": 7,
+  "sentence": 23,
+  "text": "এই একই reasoning Computer Science-এ recursive algorithm এবং data structure-এর বিভিন্ন properties প্রমাণ করতে কাজে লাগে।",
+  "start": 76.45,
+  "end": 82.85
+ },
+ {
+  "scene": 7,
+  "sentence": 24,
+  "text": "কারণ শুধু কোনো result পাওয়াই যথেষ্ট নয়।",
+  "start": 83.31,
+  "end": 85.64
+ },
+ {
+  "scene": 7,
+  "sentence": 25,
+  "text": "কেন সেটা প্রতিটি valid step-এ কাজ করে,",
+  "start": 86.14,
+  "end": 88.36
+ },
+ {
+  "scene": 7,
+  "sentence": 25,
+  "text": "সেটাও প্রমাণ করতে হয়।",
+  "start": 88.53,
+  "end": 89.68
+ },
+ {
+  "scene": 8,
+  "sentence": 26,
+  "text": "তাহলে মনে রেখো,",
+  "start": 90.11,
+  "end": 90.99
+ },
+ {
+  "scene": 8,
+  "sentence": 26,
+  "text": "Mathematical Induction-এর দুটি মূল শর্ত।",
+  "start": 91.12,
+  "end": 93.52
+ },
+ {
+  "scene": 8,
+  "sentence": 27,
+  "text": "প্রথম ধাপ সত্য হতে হবে।",
+  "start": 94.0,
+  "end": 95.41
+ },
+ {
+  "scene": 8,
+  "sentence": 28,
+  "text": "আর প্রতিটি ধাপ পরের ধাপকে নিশ্চিত করতে হবে।",
+  "start": 95.76,
+  "end": 98.56
+ },
+ {
+  "scene": 8,
+  "sentence": 29,
+  "text": "এইভাবেই একটা ছোট্ট proof থেকে তৈরি হয় অসীমের chain।",
+  "start": 98.93,
+  "end": 102.84
+ }
+]

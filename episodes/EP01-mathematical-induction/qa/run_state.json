@@ -1,0 +1,21 @@
+{
+  "start": "2026-11-12T12:17:26.111425+00:00",
+  "marks": [
+    {
+      "t": "2026-11-12T12:17:26.111425+00:00",
+      "label": "start (production request received)"
+    },
+    {
+      "t": "2026-11-12T12:25:23.995015+00:00",
+      "label": "intake done: audio aligned to pauses"
+    },
+    {
+      "t": "2026-11-12T12:35:54.331682+00:00",
+      "label": "build done: composition passes lint/check, keyframes reviewed"
+    },
+    {
+      "t": "2026-11-12T12:40:11.962184+00:00",
+      "label": "draft render done (3m41s), checked"
+    }
+  ]
+}

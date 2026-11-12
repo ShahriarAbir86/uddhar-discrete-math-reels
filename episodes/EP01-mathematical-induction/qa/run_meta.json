@@ -1,0 +1,9 @@
+{
+  "style": ["Uddhar Whiteboard (Deep Navy ink, Primary Orange highlights, marker-stroke reveals, one continuous world with a moving camera)"],
+  "skills": ["whiteboard-style (project)", "hyperframes (SKILL.md + references/format.md read)", "hyperframes-cli", "motion-doctrine (one continuous camera move principle)"],
+  "plugins": ["hyperframes 0.9.26 (render engine)", "GSAP 3.15.0 (timeline)", "faster-whisper turbo (tried; transcript unusable for Bengali, not used for timing)", "fontTools (font metrics)"],
+  "tools": ["ffmpeg/ffprobe 9.0.2 (silencedetect, volumedetect, probe, contact sheet)", "Chrome Headless Shell 152 (capture)", "NVENC via hyperframes --gpu", "node 24, python 3.14 / uv + python 3.12"],
+  "references": ["https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/", "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/", "series/WHITEBOARD_STYLE.md", "brand/BRAND_GUIDELINE.md", "docs/Uddhar_Brand_Guideline_Design_v2.1.md", "https://agentskillshub.top/best/claude-video-skills/ (index of video skills, downloaded relevant subset for reference only)"],
+  "inspiration": [],
+  "notes": "First full episode of the series; treated as a test of the pipeline. Subtitle/scene timing comes from measured pauses, not word-level ASR (Whisper turbo gave an unusable Bengali transcript). Script scene 7 claim about recursive algorithms/data structures has no source opened. Capture browser reported the AMD integrated GPU as WebGL renderer; the NVIDIA RTX 3050 was used only if NVENC encoding engaged (encode step was 0.2 s)."
+}
