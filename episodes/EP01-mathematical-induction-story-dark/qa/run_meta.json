@@ -1,0 +1,9 @@
+{
+  "style": ["Animation Story · Dark mode (brand Deep Navy #101B49 page, cream #FEEEE7 cards, orange accent)"],
+  "skills": ["animation-story-style", "hyperframes", "hyperframes-cli"],
+  "plugins": ["hyperframes 0.9.26", "GSAP 3.15.0", "Pillow/numpy (make_paper.py dark)"],
+  "tools": ["ffmpeg/ffprobe", "tools/hf.sh render (adds --gpu)", "phrase_times.json reused from the Whiteboard EP01", "capture browser on the NVIDIA GPU via Windows per-app preference"],
+  "references": ["styles/animation-story/STYLE_GUIDE.md", "styles/animation-story/palette.mjs dark", "episodes/EP01-mathematical-induction (script, voiceover)"],
+  "inspiration": [],
+  "notes": "Same script and voiceover as the Whiteboard EP01, redesigned in Animation Story Dark. Scene 7 CS claim from the script is still unsourced. No word-level audio/script check."
+}

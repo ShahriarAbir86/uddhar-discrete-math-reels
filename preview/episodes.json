@@ -1,5 +1,22 @@
 [
   {
+    "id": "ep01d",
+    "code": "EP01 Dark",
+    "folder": "EP01-mathematical-induction-story-dark",
+    "deliverables": "EP01-mathematical-induction-story-dark",
+    "title": "Mathematical Induction (Animation Story, Dark)",
+    "topic": "Same script and voiceover as the Whiteboard EP01, redesigned",
+    "style": "Animation Story · Dark",
+    "rendered": "2026-11-13",
+    "status": "Review",
+    "notes": [
+      "Brand navy #101B49 page, cream cards, orange accent",
+      "Dominoes cascade, base case, inductive step, algebra, recursion and tree",
+      "Logo top-left on every frame",
+      "Open item: scene 7 recursion claim has no source yet"
+    ]
+  },
+  {
     "id": "ep02l",
     "code": "EP02 Light",
     "folder": "EP02-Assignment-deadline-light",
@@ -38,7 +55,7 @@
     "code": "EP01",
     "folder": "EP01-mathematical-induction",
     "deliverables": "EP01-mathematical-induction",
-    "title": "Mathematical Induction",
+    "title": "Mathematical Induction (Whiteboard)",
     "topic": "Proof by induction · dominoes, base case, inductive step",
     "style": "Whiteboard",
     "rendered": "2026-11-12",

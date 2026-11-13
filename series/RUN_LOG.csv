@@ -2,3 +2,4 @@ episode,finished_utc,wall_clock,active_time,calls,input_tokens,output_tokens,cac
 EP01-mathematical-induction,2026-11-12T12:45Z,28m 19s,28m 17s,58,130,117094,179001,17494326,claude-sonnet-5-5,105.00,1080x1920@60/1
 EP02-Assignment-deadline,2026-11-13T13:10Z,21m 27s,21m 27s,39,86,106194,159266,8849276,claude-sonnet-5-5,97.90,1080x1920@60/1
 EP02-Assignment-deadline-light,2026-11-13T13:41Z,11m 06s,10m 51s,12,30,7830,17088,4506167,claude-sonnet-5-5,97.90,1080x1920@60/1
+EP01-mathematical-induction-story-dark,2026-11-13T14:03Z,12m 18s,12m 17s,12,28,32527,61983,5246531,claude-sonnet-5-5,105.40,1080x1920@60/1
