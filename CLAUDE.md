@@ -16,6 +16,9 @@ If instructions conflict, report the conflict before production. Never silently 
 ## Default command
 When the user says `/whiteboard-style`, “use whiteboard style”, or asks to produce an episode, load and follow the Whiteboard Style skill plus all relevant project files.
 
+## Styles library (always follow)
+Styles live in `styles/` (see `styles/README.md`). `/whiteboard-style` → Whiteboard skill. `/animation-story-style` or "animation story style" → load `.claude/skills/animation-story-style/SKILL.md` and `styles/animation-story/STYLE_GUIDE.md` + `tokens.json` + `reference/` frames (reference video: `C:\Educational\Phitron\Uddhar\Video Styles references\AnimationStorystyle.mp4`, not in Git). Both styles use the official Uddhar logo from `brand/assets/` only. If the user doesn't name a style, ask which one before building.
+
 ## Production autonomy
 Do the work end-to-end where tools and runtime allow. Do not stop after giving advice or a plan. Inspect files, create code, run render commands, inspect keyframes, fix defects, and export deliverables. Ask only when a genuinely blocking input is missing (e.g. voiceover, exact approved logo file, or an unresolved content ambiguity).
 
