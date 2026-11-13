@@ -1,15 +1,37 @@
 [
   {
+    "id": "ep02l",
+    "code": "EP02 Light",
+    "folder": "EP02-Assignment-deadline-light",
+    "deliverables": "EP02-Assignment-deadline-light",
+    "title": "The Assignment Deadline Trap (Light)",
+    "topic": "Same episode as EP02, rebuilt in the Light mode",
+    "style": "Animation Story · Light",
+    "rendered": "2026-11-13",
+    "status": "Review",
+    "notes": [
+      "Brand cream #FEEEE7 page, white cards, navy subtitle bar",
+      "Same voiceover, storyboard and animation as EP02",
+      "Scene 1 is a cream scene (no night colours)",
+      "Rendered 1080×1920, 60 fps, GPU"
+    ]
+  },
+  {
     "id": "ep02",
     "code": "EP02",
     "folder": "EP02-Assignment-deadline",
     "deliverables": "EP02-Assignment-deadline",
-    "title": "The Assignment Deadline Trap",
+    "title": "The Assignment Deadline Trap (v1)",
     "topic": "Propositional logic · converse and contrapositive",
-    "style": "Animation Story",
+    "style": "Animation Story · beige v1",
     "rendered": "2026-11-13",
     "status": "Review",
-    "notes": ["1080×1920 · 60 fps master, 540×960 here", "Voiceover: ElevenLabs, 95.2 s, timing from measured pauses", "Logo top-left on every frame, end card on Deep Navy", "Deadline scenario is hypothetical, noted on the end card"]
+    "notes": [
+      "1080×1920 · 60 fps master, 540×960 here",
+      "Voiceover: ElevenLabs, 95.2 s, timing from measured pauses",
+      "Logo top-left on every frame, end card on Deep Navy",
+      "Deadline scenario is hypothetical, noted on the end card"
+    ]
   },
   {
     "id": "ep01",
@@ -21,6 +43,10 @@
     "style": "Whiteboard",
     "rendered": "2026-11-12",
     "status": "Delivered",
-    "notes": ["1080×1920 · 60 fps master, 540×960 here", "Single continuous diagram with camera moves", "Open item: scene 7 recursion claim has no source yet"]
+    "notes": [
+      "1080×1920 · 60 fps master, 540×960 here",
+      "Single continuous diagram with camera moves",
+      "Open item: scene 7 recursion claim has no source yet"
+    ]
   }
 ]

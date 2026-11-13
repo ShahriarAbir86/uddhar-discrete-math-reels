@@ -1,0 +1,9 @@
+{
+  "style": ["Animation Story · Light mode (brand cream #FEEEE7, navy ink, white cards)"],
+  "skills": ["animation-story-style (Light/Dark modes added)", "hyperframes", "hyperframes-cli"],
+  "plugins": ["hyperframes 0.9.26", "GSAP 3.15.0", "Pillow/numpy (make_paper.py light)"],
+  "tools": ["ffmpeg/ffprobe", "tools/hf.sh render --gpu", "MODE=light build.mjs", "Windows per-app GPU preference set to high performance during this session"],
+  "references": ["styles/animation-story/STYLE_GUIDE.md §3", "styles/animation-story/palette.mjs", "brand guideline Light #FEEEE7"],
+  "inspiration": [],
+  "notes": "Second version of EP02 (same voiceover, storyboard and animation as the first build). Differences: cream page, white cards, navy subtitle bar, scene 1 is a cream scene instead of a night scene. Render ran at 9m42s because the machine was busy; the GPU preference for the capture browser was set only after this render started."
+}

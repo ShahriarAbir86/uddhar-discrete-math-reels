@@ -4,4 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1 HYPERFRAMES_NO_UPDATE_CHECK=1
-exec node_modules/.bin/hyperframes "$@"
+# Policy: renders always use the GPU (NVIDIA RTX 3050 NVENC + high-performance GPU for the capture browser).
+args=("$@")
+if [ "${1:-}" = "render" ] && [[ " $* " != *" --gpu "* ]]; then args+=(--gpu); fi
+exec node_modules/.bin/hyperframes "${args[@]}"

@@ -14,8 +14,13 @@ const E = (i) => PH[i].end;
 const AUDIO = 95.24, DUR = 97.9;
 
 // ---- tokens (styles/animation-story/tokens.json) ----
-const NAVY = "#101B49", ORANGE = "#F2530F", PAPER = "#EEE8D8", CARD = "#F6F3E8", GREY = "#6A645F", MID = "#9A948C", LIGHT = "#C9C2B6";
-const TINT = "#6C74A6", LILAC = "#B9BEE0", SUBBG = "#0B1235", HUD = "#7F84A3", SKIN = "#8A8EA3", NIGHT = "#0C1440", NIGHT2 = "#1B2766", NIGHT3 = "#3A4686";
+// MODE=light -> brand cream version (styles/animation-story palette, Light). Default (v1) = original beige paper + navy night scene.
+const LM = process.env.MODE === "light";
+const OUT = path.resolve(here, process.env.OUT || ".");
+const NAVY = "#101B49", ORANGE = "#F2530F", PAPER = LM ? "#FEEEE7" : "#EEE8D8", CARD = LM ? "#FFFFFF" : "#F6F3E8", GREY = LM ? "#8B7F78" : "#6A645F", MID = "#9A948C", LIGHT = LM ? "#E3D2C8" : "#C9C2B6";
+const TINT = "#6C74A6", LILAC = "#B9BEE0", SUBBG = LM ? "#101B49" : "#0B1235", HUD = "#7F84A3", SKIN = "#8A8EA3";
+const NIGHT = LM ? "none" : "#0C1440", NIGHT2 = LM ? "#FDE5DB" : "#1B2766", NIGHT3 = LM ? "#6C74A6" : "#3A4686";
+const FURN = LM ? "#101B49" : "#2B3A7A", DOTN = LM ? "#E9C9B8" : "#3A4686", SKY = LM ? "#E6D3C8" : "#BDB7AB", CAPC = LM ? "#101B49" : "#3A4686", CLKSH = LM ? "#101B49" : "#050A24";
 const f = (n) => +Number(n).toFixed(2);
 
 function tw(str, size, face = "pjs600") {
@@ -90,7 +95,8 @@ DEFS.push(
   `<pattern id="dotsG" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="5" cy="5" r="2.7" fill="${GREY}"/></pattern>`,
   `<pattern id="dotsO" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="6" cy="6" r="3.6" fill="${ORANGE}"/></pattern>`,
   `<pattern id="dotsOD" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="3.5" cy="3.5" r="1.7" fill="#B53A08"/></pattern>`,
-  `<pattern id="dotsN" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="4.5" cy="4.5" r="1.6" fill="${NIGHT3}"/></pattern>`,
+  `<pattern id="dotsN" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="4.5" cy="4.5" r="1.6" fill="${DOTN}"/></pattern>`,
+  `<pattern id="dotsE" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><circle cx="4.5" cy="4.5" r="1.6" fill="#3A4686"/></pattern>`,
   `<linearGradient id="gSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="0.48" stop-color="#fff"/><stop offset="0.62" stop-color="#000"/></linearGradient>`,
   `<linearGradient id="gSunI" x1="0" y1="0" x2="1" y2="1"><stop offset="0.3" stop-color="#000"/><stop offset="0.55" stop-color="#fff"/><stop offset="0.95" stop-color="#fff"/></linearGradient>`,
   `<mask id="mSun" maskUnits="userSpaceOnUse" x="-300" y="-300" width="600" height="600"><rect x="-300" y="-300" width="600" height="600" fill="url(#gSun)"/></mask>`,
@@ -110,9 +116,9 @@ function skyline() {
   let x = -20, out = "";
   while (x < 1100) {
     const w = 74 + Math.floor(rnd() * 70), h = 170 + Math.floor(rnd() * 260), y = 1128 - h;
-    out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#BDB7AB"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#dotsG)" opacity="0.75"/>`;
+    out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${SKY}"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#dotsG)" opacity="0.75"/>`;
     for (let wy = y + 22; wy < 1100; wy += 34) for (let wx = x + 14; wx < x + w - 16; wx += 26) if (rnd() > 0.25) out += `<rect x="${wx}" y="${wy}" width="12" height="18" fill="${PAPER}" opacity="0.8"/>`;
-    out += `<path d="M${x} ${y} l${w * 0.2} -10 l${w * 0.25} 8 l${w * 0.3} -9 l${w * 0.25} 11 Z" fill="#BDB7AB"/>`;
+    out += `<path d="M${x} ${y} l${w * 0.2} -10 l${w * 0.25} 8 l${w * 0.3} -9 l${w * 0.25} 11 Z" fill="${SKY}"/>`;
     x += w + 6 + Math.floor(rnd() * 12);
   }
   return out;
@@ -158,7 +164,7 @@ const s1 = [];
 s1.push(`<rect width="1080" height="1920" fill="${NIGHT}"/><rect width="1080" height="1920" fill="url(#dotsN)" opacity=".55"/>`);
 s1.push(`<rect x="0" y="1130" width="1080" height="790" fill="${NIGHT2}"/><rect x="0" y="1130" width="1080" height="790" fill="url(#dotsN)" opacity=".7"/><path d="M0 1130 H1080" stroke="${NIGHT3}" stroke-width="5"/>`);
 // clock card
-const clockInner = card(780, 290, { sh: "#050A24", off: 10 }) +
+const clockInner = card(780, 290, { sh: CLKSH, off: 10 }) +
   micro("Tonight", -350, -102, { c: NAVY }) +
   T("11:45", -70, 48, { size: 150, wt: 700, c: NAVY }) +
   T("PM", 245, 48, { size: 64, wt: 700, c: ORANGE }) +
@@ -172,14 +178,14 @@ const laptopDoc = `
 <rect x="590" y="600" width="370" height="250" rx="10" fill="${NAVY}"/><rect x="604" y="614" width="342" height="222" rx="4" fill="${CARD}"/>`;
 const deskInner = `
 <rect x="400" y="880" width="640" height="26" rx="6" fill="${NIGHT3}"/><rect x="430" y="906" width="26" height="224" fill="${NIGHT3}"/><rect x="984" y="906" width="26" height="224" fill="${NIGHT3}"/>
-<path d="M560 880 L990 880 L970 846 L580 846Z" fill="#2B3A7A" stroke="${NIGHT3}" stroke-width="3"/>
+<path d="M560 880 L990 880 L970 846 L580 846Z" fill="${FURN}" stroke="${NIGHT3}" stroke-width="3"/>
 ${laptopDoc}
 <rect x="150" y="800" width="16" height="250" rx="8" fill="${NIGHT3}"/><rect x="150" y="1030" width="190" height="20" rx="10" fill="${NIGHT3}"/><rect x="240" y="1050" width="16" height="80" fill="${NIGHT3}"/><rect x="170" y="1126" width="150" height="8" rx="4" fill="${NIGHT3}"/>
-<g><rect x="230" y="1012" width="250" height="40" rx="18" fill="#2B3A7A"/><rect x="448" y="1042" width="40" height="88" rx="14" fill="#2B3A7A"/><rect x="440" y="1110" width="84" height="20" rx="10" fill="#0A1030"/></g>`;
+<g><rect x="230" y="1012" width="250" height="40" rx="18" fill="${FURN}"/><rect x="448" y="1042" width="40" height="88" rx="14" fill="${FURN}"/><rect x="440" y="1110" width="84" height="20" rx="10" fill="#0A1030"/></g>`;
 const sitHero = `<ellipse cx="320" cy="1132" rx="190" ry="10" fill="#000" opacity=".25"/>` +
   `<g transform="translate(255 1035) rotate(8)"><rect x="-50" y="-250" width="100" height="250" rx="34" fill="${ORANGE}"/><rect x="6" y="-246" width="44" height="244" rx="22" fill="url(#dotsOD)"/>
    <rect x="-14" y="-282" width="28" height="36" fill="#767A90"/><circle cx="0" cy="-322" r="44" fill="${SKIN}"/>
-   <path d="M-76 -366 L0 -395 L76 -366 L0 -340Z" fill="${NIGHT3}"/><path d="M-40 -362 L-40 -344 Q0 -328 40 -344 L40 -362Z" fill="${NIGHT3}"/><path d="M66 -369 L69 -326" stroke="${ORANGE}" stroke-width="5" stroke-linecap="round"/><circle cx="69" cy="-322" r="7" fill="${ORANGE}"/>
+   <path d="M-76 -366 L0 -395 L76 -366 L0 -340Z" fill="${CAPC}"/><path d="M-40 -362 L-40 -344 Q0 -328 40 -344 L40 -362Z" fill="${CAPC}"/><path d="M66 -369 L69 -326" stroke="${ORANGE}" stroke-width="5" stroke-linecap="round"/><circle cx="69" cy="-322" r="7" fill="${ORANGE}"/>
    <g transform="translate(0 -214) rotate(-76)"><rect x="-14" y="-6" width="28" height="188" rx="14" fill="${ORANGE}"/><circle cx="0" cy="186" r="15" fill="${SKIN}"/></g></g>`;
 s1.push(G("desk", deskInner + sitHero, 0, 0, { op: 0 }));
 pop("desk", 0.7, { dy: 70, s0: 1, dur: 0.7, ease: "power2.out" });
@@ -453,7 +459,7 @@ pop("rN", S(41) + 0.8, { dy: -30, s0: 0.5, dur: 0.35 }); pop("rQ", S(41) + 0.9, 
 const sc8 = `<g id="sc8" opacity="0">${s8.join("\n")}</g>`;
 
 // ---------- end card ----------
-const endCard = `<g id="endc" opacity="0"><rect width="1080" height="1920" fill="${NAVY}"/><rect width="1080" height="1920" fill="url(#dotsN)" opacity=".5"/>
+const endCard = `<g id="endc" opacity="0"><rect width="1080" height="1920" fill="${NAVY}"/><rect width="1080" height="1920" fill="url(#dotsE)" opacity=".5"/>
   <image href="assets/Uddhar_icon.svg" x="340" y="640" width="400" height="400"/>
   ${T("UDDHAR · DISCRETE MATH", 540, 1130, { size: 30, wt: 700, c: "#FFFFFF", ls: 8, op: 0.9 })}
   ${T("এই deadline উদাহরণটি hypothetical, বাস্তব কোনো নিয়ম নয়।", 540, 1250, { size: 30, wt: 500, c: LILAC })}
@@ -504,7 +510,7 @@ const subSvg = subs.map((s, i) => {
 }).join("\n");
 subs.forEach((s, i) => L.push(`tl.set("#sub${i}",{opacity:1},${f(s.start)});tl.set("#sub${i}",{opacity:0},${f(Math.max(s.end - 0.04, s.start + 0.2))});`));
 const ts = (x) => { const h = Math.floor(x / 3600), m = Math.floor((x % 3600) / 60), s = Math.floor(x % 60), ms = Math.round((x % 1) * 1000); return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")},${String(ms).padStart(3, "0")}`; };
-fs.writeFileSync(path.join(here, "../subtitles.srt"), subs.map((s, i) => `${i + 1}\n${ts(s.start)} --> ${ts(Math.max(s.end - 0.04, s.start + 0.2))}\n${wrapLines(s.text).join("\n")}\n`).join("\n"), "utf8");
+if (!LM) fs.writeFileSync(path.join(here, "../subtitles.srt"), subs.map((s, i) => `${i + 1}\n${ts(s.start)} --> ${ts(Math.max(s.end - 0.04, s.start + 0.2))}\n${wrapLines(s.text).join("\n")}\n`).join("\n"), "utf8");
 
 // ---------- logo (top-left, official icon asset) ----------
 const logo = `<image id="logo" href="assets/Uddhar_icon.svg" x="44" y="48" width="120" height="120"/>`;
@@ -516,7 +522,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=1080, height=1920"/>
-<title>EP02 — The Assignment Deadline Trap</title>
+<title>EP02 — The Assignment Deadline Trap${LM ? " (Light)" : ""}</title>
 <script src="assets/vendor/gsap.min.js"></script>
 <style>
 @font-face{font-family:"Plus Jakarta Sans";font-weight:500;src:url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2")}
@@ -563,5 +569,6 @@ tl.seek(0);
 </body>
 </html>
 `;
-fs.writeFileSync(path.join(here, "index.html"), html, "utf8");
+fs.mkdirSync(OUT, { recursive: true });
+fs.writeFileSync(path.join(OUT, "index.html"), html, "utf8");
 console.log("index.html written:", (html.length / 1024).toFixed(0), "KB;", subs.length, "subtitle chunks;", uid, "ids");

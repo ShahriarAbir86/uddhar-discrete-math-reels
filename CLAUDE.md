@@ -58,3 +58,6 @@ The Whiteboard Style is a new experiment. Its only style references are the docu
 
 ## Completion report
 List actual created files, actual render specs, actual QA checks performed, unresolved issues, and any user action still required.
+
+## Rendering always uses the GPU
+Every render (draft or delivery) must use the GPU: `tools/hf.sh render ...` adds `--gpu` automatically (NVIDIA RTX 3050 NVENC). The capture browsers (HyperFrames chrome-headless-shell, Playwright headless shell) are set to the high-performance GPU in Windows Graphics settings (HKCU UserGpuPreferences = GpuPreference=2). After a browser update the path changes: re-apply the setting and confirm with `nvidia-smi` during a render.
