@@ -42,3 +42,4 @@ episodes/EP02-*/qa/render_*.time
 preview/config.local.json
 preview/data.json
 preview/index.html
+styles/animation-story/assets/*.png

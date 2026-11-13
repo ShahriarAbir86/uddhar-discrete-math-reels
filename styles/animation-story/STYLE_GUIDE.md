@@ -19,21 +19,29 @@ A flat-vector "paper-cut documentary" explainer. Everything sits on a warm, fibr
 - Landscape compositions from the reference become **vertical stacks**: what was "left | right" becomes "top / bottom". Split-screen comparisons (reference 2:00–2:12) = top half vs bottom half with a dashed horizontal divider.
 - Wide scenes (city skyline, queue of 10 people, world map) are built on a **world wider than the screen (e.g. 3000–4000 px)** and the camera pans across it. Don't shrink wide scenes to fit.
 
-## 3. Colour
-Reference values were sampled from frames; the Uddhar mapping is what we actually use.
+## 3. Colour: two approved modes (Light and Dark)
+**Every reel is built in exactly one mode, and the mode is chosen by the user each time** (see `.claude/skills/animation-story-style/SKILL.md`, step 0). Both modes use the brand colours from `docs/Uddhar_Brand_Guideline_Design_v2.1.md`; the exact values live in `palette.mjs` and `tokens.json` (`modes`). Orange `#F2530F` is the single accent in both.
 
-| Role | Reference (sampled) | **Use in Uddhar reels** |
+| Role | **LIGHT mode** (brand cream) | **DARK mode** (brand navy) |
 |---|---|---|
-| Paper (page) | `#E5DECC` centre → `#CBC3AD` edges, with darker fibre flecks | **Paper `#EEE8D8`**, vignette to `#D9D2BE`; fibres at ~6 % opacity. *Extension of the brand's "warm white"* |
-| Ink / characters / outlines | `#262A39`, `#10131C` | **Deep Navy `#101B49`** (secondary figures `#262A39`-like = navy at 85 %) |
-| Hero accent | `#FF3D16` – `#F83A16` | **Primary Orange `#F2530F`** — sun disc, hero shirt, key numbers, ✓ marks, active bar, progress line, stamps |
-| Second force ("AI", other side, "before") | electric blue `#2A36FE`, lilac `#8D94FF` | **Navy tint `#6C74A6` / lilac `#B9BEE0`** for ghost figures and secondary objects. *Electric blue is NOT used: brand forbids the old blue palette.* Chapter cards use **Deep Navy** instead of the reference's electric-blue background |
-| Photo greys | `#6A645F`… halftone on paper | Neutral greys `#6A645F`, `#9A948C`, `#C9C2B6` (halftone only) |
-| Subtitle band | `#151218` with orange left tick `#FE3B19` | Navy-black `#0B1235`, orange tick `#F2530F`, text white |
-| Light panels | `#F6F6F7`-ish cards | Cards `#F6F3E8` / Light Neutral `#F6F6F7` with navy border |
-| Reference's green signposts/laptop UI | `#1F6B4A` | **Not used** (extra colour). Use navy or orange |
+| Page / background | **Light `#FEEEE7`** (brand "soft orange-tinted surface"), vignette to `#FDE5DB`, warm fibre texture ~6 % | **Deep Navy `#101B49`**, vignette to `#0A1033`, cool fibre texture ~4 % |
+| Text outside cards, headings | Deep Navy `#101B49` | Cream `#FEEEE7` |
+| Cards / tags / panels | White `#FFFFFF` (or Light Neutral `#F6F6F7`), navy `#101B49` border, hard navy offset shadow, navy text | Cream `#FEEEE7`, dark-navy `#0A1033` border, hard `#050A24` offset shadow, navy text |
+| Hero and other figures | orange shirt, navy `#101B49` trousers/cap, skin `#8A8EA3` | orange shirt, navy-tint `#3A4686` trousers/cap, skin `#8A8EA3` |
+| Ground line, dashed horizon | `#555473` | `#3A4686` |
+| Halftone (skyline, floor, shading) | warm grey `#8B7F78` dots on blush `#E6D3C8` | navy tint `#3A4686` dots on `#1B2766` |
+| Sun disc | orange `#F2530F` + orange halftone | orange `#F2530F` + orange halftone |
+| Secondary force (ghost figures, "AI", "before") | navy tint `#6C74A6` / lilac `#B9BEE0` | same |
+| Subtitle bar | navy `#101B49`, white text, orange tick | `#050A24`, cream text, orange tick |
+| HUD marks / micro labels | `#7F84A3` / navy at 55 % | `#7F84A3` / cream at 60 % |
+| Chapter and end cards | Deep Navy full-bleed with cream numeral/white logo | `#0A1033` full-bleed (darker than the page) with cream numeral/white logo |
+| Logo | official icon `brand/assets/Uddhar_logo_white.svg`, top-left; fine on both modes | same |
 
-Rule: on any frame, at most **paper + navy + greys + orange**, plus tints of navy. Orange covers ≤ ~12 % of the frame and always marks "the thing to look at". Decisions flagged for the user to override: paper tone, navy-tint replacement for blue.
+Reference-video values (sampled) for comparison: paper `#E5DECC`, orange `#FF3D16`, ink `#262A39`, electric blue `#2A36FE`. **Electric blue and green are never used** (brand forbids the old blue palette).
+Rule for any frame: page colour + navy/cream + greys/tints + orange. Orange covers ≤ ~12 % of the frame and always marks "the thing to look at".
+
+Page texture: `python styles/animation-story/tools/make_paper.py light|dark <out.png>` (1080×1920). Palette sheet: `reference/mode_light_dark.png`.
+**Legacy note:** EP02 (2026-11-13) was built before the two modes existed, with beige paper `#EEE8D8` and one navy night scene. It matches neither mode exactly; rebuild it in Light or Dark if it must follow the final system.
 
 ## 4. Typography
 - **Bangla headlines / labels:** Hind Siliguri 600–700 (brand font). The reference uses a heavy condensed Bangla display face for big phrases ("কোন কাজ টিকবে?") — approximate with Hind Siliguri 700, tight tracking (−1 %), and large size; do **not** substitute a decorative font.
@@ -93,7 +101,7 @@ Chapters: for a 60–120 s reel, 0–1 chapter cards (opening); for long-form (>
 
 ## 9. Uddhar logo and brand elements
 - Use only `brand/assets/Uddhar_logo.svg` (primary), `Uddhar_logo_white.svg` (on Navy/end card), `Uddhar_logo_orange.svg` (when orange logo needed on paper). Never redraw, recolour, shadow or outline.
-- Placement: **top-right, inside safe margin (x 880–1016, y 96–150), ~96–130 px wide**, on a clean paper area; in the opening 2 s and the end card **large** (≈ 360 px wide, centred on Navy, white logo). Do not place on halftone/photo areas.
+- Placement (user decision 2026-11-13): **top-left corner, x 44 y 48, ~120 px square**, on every frame; the chapter tag sits to its right (x 196); in the opening 2 s and the end card **large** (≈ 400 px, centred on the Navy end card). Do not place on halftone/photo areas.
 - The reference's four-colour chip bottom-left is replaced by a **small paper-coloured ‹uddhar› mark** only if the logo asset has an icon-only version; otherwise leave that corner for the episode counter and rely on the top-right logo.
 - Series identity: "EP.xx · scene" counter replaces the reference's "EP.01 · 07"; chapter tag text in Bangla.
 

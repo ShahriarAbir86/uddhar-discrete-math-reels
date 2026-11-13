@@ -1,15 +1,27 @@
 ---
 name: animation-story-style
-description: Produce Uddhar 9:16 Reels in the "Animation Story" paper-cut documentary style (continuous flat-vector world, orange hero, halftone photos, stat scenes, checklist panels, burned-in subtitles) with the official Uddhar logo. Use when the user says /animation-story-style, "animation story style", or gives a script and asks for a story-style reel.
+description: Produce Uddhar 9:16 Reels in the "Animation Story" paper-cut documentary style (continuous flat-vector world, orange hero, halftone photos, stat scenes, checklist panels, burned-in subtitles) with the official Uddhar logo, in a LIGHT (brand cream) or DARK (brand navy) mode that the user picks every time. Use when the user says /animation-story-style, "animation story style", or gives a script and asks for a story-style reel.
 ---
 
 # Animation Story Style (Uddhar 9:16)
 
 Always follow this skill when the user asks for the Animation Story style. The Whiteboard style is a separate skill (`whiteboard-style`); never mix the two in one reel unless asked.
 
+## 0. Ask for the mode first (mandatory, every reel)
+Before any planning or building, ask the user **Light or Dark?** with AskUserQuestion (two options, no default, no recommendation):
+- **Light**: brand cream page `#FEEEE7`, navy ink and text, white cards with navy borders.
+- **Dark**: brand Deep Navy page `#101B49`, cream `#FEEEE7` cards and text.
+Rules:
+- Ask for **each new reel**, even if the previous reel used a mode. Never reuse an earlier answer silently and never pick for the user.
+- Skip the question only when the user's current request already says "light" or "dark" for this reel (then confirm it in one line).
+- One mode per reel; do not mix modes (chapter/end cards are navy in both by design).
+- Record the choice in `qa/intake.md` and `qa/run_meta.json` (`"style": ["Animation Story · Light"]`).
+- Build with `styles/animation-story/palette.mjs` (`PALETTES.light` / `PALETTES.dark`) and the matching page texture: `python styles/animation-story/tools/make_paper.py light|dark src/assets/paper.png`. Do not hard-code colours in the episode build script.
+Palette sheet: `styles/animation-story/reference/mode_light_dark.png`. Full table: STYLE_GUIDE §3.
+
 ## 1. Load first (in order)
 1. `styles/animation-story/STYLE_GUIDE.md` — the full spec (read it, don't paraphrase from memory).
-2. `styles/animation-story/tokens.json` — exact colours, sizes, positions.
+2. `styles/animation-story/tokens.json` + `palette.mjs` — exact colours (both modes), sizes, positions.
 3. `styles/animation-story/reference/` — look at `frame_hero_scene.jpg`, `frame_split_screen_props.jpg`, `frame_halftone_fog_checklist.jpg`, `frame_chapter_card.jpg` and the contact sheets before designing.
 4. `brand/BRAND_GUIDELINE.md`, `series/AUDIO_AND_SUBTITLE_RULES.md`, `series/QUALITY_CHECKLIST.md`, `series/PRODUCTION_PIPELINE.md`.
 5. Episode inputs: `script.md`, `voiceover.mp3` (ElevenLabs, exact), `inspiration/` images, `brief.md`.
@@ -17,8 +29,8 @@ The original video lives outside Git at `C:\Educational\Phitron\Uddhar\Video Sty
 
 ## 2. Non-negotiables
 - **1080×1920, 60 fps, 9:16.** Bottom 380 px is UI-reserved; subtitles at y ≈ 1440; margins 64 px.
-- **Official logo only**: `brand/assets/Uddhar_logo*.svg` (top-right safe slot, large on end card). Never redraw. Not on halftone/photo areas.
-- **Colours**: paper + Deep Navy `#101B49` + greys + Primary Orange `#F2530F` (+ navy tints). No electric blue, green, teal, gradients, glow, blur shadows, 3D, stock icons, emoji.
+- **Official logo only**: `brand/assets/Uddhar_logo_white.svg` icon, **top-left corner** (x 44, y 48, 120 px) on every frame, large on the end card. Chapter tag sits right of it. Never redraw. Not on halftone/photo areas.
+- **Colours**: the chosen mode's palette only (Light: cream `#FEEEE7` page + navy; Dark: navy `#101B49` page + cream), greys/navy tints, and Primary Orange `#F2530F` as the single accent. No electric blue, green, teal, gradients, glow, blur shadows, 3D, stock icons, emoji.
 - **Fonts**: Hind Siliguri (Bangla), Plus Jakarta Sans (Latin/micro-labels). Bundle as woff2.
 - **One continuous world**, camera/world moves, objects keep stable coordinates; hard cuts only for chapter/topic shifts.
 - **Audio is the timeline**: user's voiceover only; no TTS, no music, no SFX unless asked. Picture lands on the phrase it illustrates. Subtitles from the script, chunked ≤ 7 words, `.srt` exported.
@@ -43,7 +55,7 @@ The original video lives outside Git at `C:\Educational\Phitron\Uddhar\Video Sty
 - [ ] Cards with thick border + hard offset shadow, slight rotation.
 - [ ] Stats: big orange number + micro-label + one illustration.
 - [ ] Subtitle bar with orange left tick, in safe zone.
-- [ ] Official logo in safe slot + end card.
+- [ ] Official logo top-left on every frame + end card.
 - [ ] Continuous motion; no unmotivated cuts; no frozen holds > 1.5 s without idle motion.
 
 ## 5. If something is missing
