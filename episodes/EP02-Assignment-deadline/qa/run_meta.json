@@ -1,0 +1,9 @@
+{
+  "style": ["Uddhar Animation Story (paper-cut documentary: paper texture, orange hero, halftone sun/skyline, hard-offset cards, HUD, subtitle bar with orange tick) per styles/animation-story/STYLE_GUIDE.md; night variant on Deep Navy for scene 1"],
+  "skills": ["animation-story-style (project, created this session)", "hyperframes", "hyperframes-cli", "gsap-core/timeline", "artifact-design (preview page)"],
+  "plugins": ["hyperframes 0.9.26 (render engine)", "GSAP 3.15.0 (timeline)", "Pillow/numpy (paper texture)"],
+  "tools": ["ffmpeg/ffprobe (silencedetect, volumedetect, preview encode)", "tools/phrase_times.py (silence-aligned phrase timing)", "tools/make_preview.sh + tools/build_preview.mjs (remote preview page)", "NVENC via hyperframes --gpu (hardware gpu capture reported)", "node 24"],
+  "references": ["styles/animation-story/STYLE_GUIDE.md (from AnimationStorystyle.mp4)", "brand/BRAND_GUIDELINE.md", "brand/assets/Uddhar_logo_white.svg (logo supplied by user)", "user-supplied script, ElevenLabs phonetic script and Voiceover.mp3"],
+  "inspiration": [],
+  "notes": "Brief asked 1920x1080 / 30 fps / #F47B32 for a 9:16 reel; produced 1080x1920 / 60 fps with brand orange #F2530F per the newer brand + style instruction. Voice is 95.24 s (brief said 90). Timing from measured pauses, no word-level ASR check of the voiceover against the script. Logo top-left on every frame. Preview page published as a private Artifact."
+}

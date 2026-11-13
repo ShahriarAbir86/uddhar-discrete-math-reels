@@ -1,0 +1,102 @@
+<title>Uddhar Reel Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: a review desk. Episode rail on the left, phone-ratio player and notes beside it; one column on phones. */
+:root{
+  --bg:#F0EBDD; --panel:#F8F5EC; --fg:#101B49; --muted:#5B6285; --line:#D5CEBB; --accent:#F2530F; --accent-ink:#FFFFFF;
+  --display:"Plus Jakarta Sans","Hind Siliguri",system-ui,sans-serif; --body:"Hind Siliguri","Plus Jakarta Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1033;--panel:#121B4A;--fg:#EEE8D8;--muted:#9AA1C8;--line:#2A346E;--accent:#FF6A2B;--accent-ink:#0A1033;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1033;--panel:#121B4A;--fg:#EEE8D8;--muted:#9AA1C8;--line:#2A346E;--accent:#FF6A2B;--accent-ink:#0A1033;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;border-bottom:3px solid var(--fg);padding-bottom:14px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.sub{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.desk{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:760px){.desk{grid-template-columns:minmax(0,1fr)}}
+.list{display:grid;gap:10px;min-width:0}
+.item{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px;align-items:center;text-align:left;width:100%;padding:10px;background:var(--panel);border:2px solid var(--line);border-radius:6px;color:inherit;font:inherit;cursor:pointer}
+.item img{width:54px;aspect-ratio:9/16;object-fit:cover;border-radius:3px;background:var(--line)}
+.item b{font-family:var(--display);font-size:13px;letter-spacing:.1em}
+.item span{display:block;font-size:15px;line-height:1.3}
+.item[aria-current="true"]{border-color:var(--accent);box-shadow:5px 5px 0 var(--accent)}
+.item:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.stage{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:760px){.stage{grid-template-columns:minmax(0,1fr)}}
+.phone{background:#000;border:3px solid var(--fg);border-radius:10px;box-shadow:8px 8px 0 var(--fg);overflow:hidden;width:100%;max-width:340px;margin-inline:auto}
+video{display:block;width:100%;aspect-ratio:9/16;background:#000}
+.meta{display:grid;gap:14px;min-width:0}
+.meta h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,30px);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border:2px solid var(--fg);border-radius:4px}
+.tag.hot{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.meta p{margin:0;color:var(--muted)}
+ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button.btn{font-family:var(--display);font-weight:700;font-size:14px;padding:10px 14px;border:2px solid var(--fg);background:var(--fg);color:var(--bg);border-radius:6px;cursor:pointer}
+button.btn.alt{background:transparent;color:var(--fg)}
+.stamp{font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:700}
+label{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+textarea{width:100%;min-height:96px;resize:vertical;padding:10px;font:inherit;background:var(--panel);color:var(--fg);border:2px solid var(--line);border-radius:6px}
+.hint{font-size:14px}
+</style>
+<div class="wrap">
+  <header><h1>Uddhar Reel Preview</h1><div class="sub">Discrete Mathematics · 9:16 reels</div></header>
+  <div class="desk">
+    <nav class="list" id="list" aria-label="Episodes"></nav>
+    <section class="stage" aria-live="polite">
+      <div class="phone"><video id="v" controls playsinline preload="metadata"></video></div>
+      <div class="meta">
+        <div class="tags" id="tags"></div>
+        <h2 id="title"></h2>
+        <p id="topic"></p>
+        <ul id="notes"></ul>
+        <div class="tools">
+          <button class="btn" id="stampBtn" type="button">Copy timestamp</button>
+          <span class="stamp" id="stamp">0:00.0</span>
+          <button class="btn alt" id="speed" type="button">Speed 1×</button>
+        </div>
+        <label for="fb">Feedback for this episode (kept in this browser)</label>
+        <textarea id="fb" placeholder="Example: EP02 0:41.3 the formula overlaps the card"></textarea>
+        <p class="hint">Pause where you see something to change, tap Copy timestamp, and paste it into your message to Claude.</p>
+      </div>
+    </section>
+  </div>
+</div>
+<script>
+const EPISODES = [{"id":"ep02","code":"EP02","title":"The Assignment Deadline Trap","topic":"Propositional logic · converse and contrapositive","style":"Animation Story","duration":97.9,"rendered":"2026-11-13","status":"Review","notes":["1080×1920 · 60 fps master, 540×960 here","Voiceover: ElevenLabs, 95.2 s, timing from measured pauses","Logo top-left on every frame, end card on Deep Navy","Deadline scenario is hypothetical, noted on the end card"]},{"id":"ep01","code":"EP01","title":"Mathematical Induction","topic":"Proof by induction · dominoes, base case, inductive step","style":"Whiteboard","duration":105,"rendered":"2026-11-12","status":"Delivered","notes":["1080×1920 · 60 fps master, 540×960 here","Single continuous diagram with camera moves","Open item: scene 7 recursion claim has no source yet"]}];
+const $ = (id) => document.getElementById(id);
+const v = $("v");
+let cur = null;
+const fmt = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
+const store = { get(k) { try { return localStorage.getItem(k) || ""; } catch (e) { return ""; } }, set(k, x) { try { localStorage.setItem(k, x); } catch (e) {} } };
+function select(i, keep) {
+  cur = EPISODES[i];
+  v.poster = `media/${cur.id}.jpg`; v.src = `media/${cur.id}.mp4`;
+  $("title").textContent = `${cur.code} · ${cur.title}`;
+  $("topic").textContent = cur.topic;
+  $("tags").innerHTML = "";
+  [[cur.status, cur.status === "Review"], [cur.style + " style", false], [`${Math.floor(cur.duration)} s`, false], [cur.rendered, false]].forEach(([t, hot]) => { const s = document.createElement("span"); s.className = "tag" + (hot ? " hot" : ""); s.textContent = t; $("tags").appendChild(s); });
+  $("notes").innerHTML = ""; cur.notes.forEach((n) => { const li = document.createElement("li"); li.textContent = n; $("notes").appendChild(li); });
+  $("fb").value = store.get("fb-" + cur.id);
+  [...$("list").children].forEach((b, k) => b.setAttribute("aria-current", k === i ? "true" : "false"));
+  if (!keep) location.hash = cur.id;
+}
+EPISODES.forEach((e, i) => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "item";
+  b.innerHTML = `<img alt="" src="media/${e.id}.jpg"><div><b>${e.code}</b><span>${e.title}</span></div>`;
+  b.onclick = () => select(i); $("list").appendChild(b);
+});
+const start = Math.max(0, EPISODES.findIndex((e) => e.id === location.hash.slice(1)));
+if (EPISODES.length) select(start, true);
+window.addEventListener("hashchange", () => { const k = EPISODES.findIndex((e) => e.id === location.hash.slice(1)); if (k >= 0) select(k, true); });
+v.addEventListener("timeupdate", () => { $("stamp").textContent = fmt(v.currentTime); });
+$("stampBtn").onclick = async () => { const s = `${cur.code} ${fmt(v.currentTime)}`; try { await navigator.clipboard.writeText(s); $("stampBtn").textContent = `Copied ${s}`; } catch (e) { $("fb").value += (($("fb").value ? "\n" : "") + s + " "); $("stampBtn").textContent = "Added to notes"; } setTimeout(() => { $("stampBtn").textContent = "Copy timestamp"; }, 1600); };
+const rates = [1, 1.5, 0.5]; let ri = 0;
+$("speed").onclick = () => { ri = (ri + 1) % rates.length; v.playbackRate = rates[ri]; $("speed").textContent = `Speed ${rates[ri]}×`; };
+$("fb").addEventListener("input", () => store.set("fb-" + cur.id, $("fb").value));
+</script>

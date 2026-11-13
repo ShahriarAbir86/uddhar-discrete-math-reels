@@ -41,3 +41,6 @@ Never commit API keys, access tokens, `.env` files, credentials, student persona
 
 ## Per-reel tracking
 Every reel gets `episodes/EPXX/qa/run_summary.md` (tokens, time, output specs, tools/skills/styles/references used) and a row in `series/RUN_LOG.csv`. See `series/PRODUCTION_PIPELINE.md`.
+
+## Remote preview page
+`bash tools/make_preview.sh EPxx-folder epxx` makes a small 540x960 preview in `preview/media/`; add the episode to `preview/episodes.json`, run `node tools/build_preview.mjs`, then publish `preview/index.html` + `preview/media/*` with the Artifact tool (Claude does this). The page is private, plays on any device, and has a Copy timestamp button for feedback.
