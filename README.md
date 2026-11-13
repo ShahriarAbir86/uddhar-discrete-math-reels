@@ -44,3 +44,6 @@ Every reel gets `episodes/EPXX/qa/run_summary.md` (tokens, time, output specs, t
 
 ## Remote preview page
 `bash tools/make_preview.sh EPxx-folder epxx` makes a small 540x960 preview in `preview/media/`; add the episode to `preview/episodes.json`, run `node tools/build_preview.mjs`, then publish `preview/index.html` + `preview/media/*` with the Artifact tool (Claude does this). The page is private, plays on any device, and has a Copy timestamp button for feedback.
+
+## Desktop app
+Double-click `Install-Preview-App.cmd` once to put **Uddhar Reel Preview** on the Desktop. Details: `preview/INSTALL.md`.

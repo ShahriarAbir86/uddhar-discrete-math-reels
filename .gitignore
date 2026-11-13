@@ -34,9 +34,11 @@ episodes/*/qa/render_*.time
 episodes/*/qa/check.json
 episodes/*/qa/check.err
 episodes/*/qa/align.log
-preview/media/*.mp4
 episodes/EP02-*/renders/
 episodes/EP02-*/Voiceover.mp3
 episodes/EP02-*/src/assets/voiceover.mp3
 episodes/EP02-*/qa/render_*.log
 episodes/EP02-*/qa/render_*.time
+preview/config.local.json
+preview/data.json
+preview/index.html

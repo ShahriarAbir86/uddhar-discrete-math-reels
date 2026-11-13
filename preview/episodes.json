@@ -2,10 +2,11 @@
   {
     "id": "ep02",
     "code": "EP02",
+    "folder": "EP02-Assignment-deadline",
+    "deliverables": "EP02-Assignment-deadline",
     "title": "The Assignment Deadline Trap",
     "topic": "Propositional logic · converse and contrapositive",
     "style": "Animation Story",
-    "duration": 97.9,
     "rendered": "2026-11-13",
     "status": "Review",
     "notes": ["1080×1920 · 60 fps master, 540×960 here", "Voiceover: ElevenLabs, 95.2 s, timing from measured pauses", "Logo top-left on every frame, end card on Deep Navy", "Deadline scenario is hypothetical, noted on the end card"]
@@ -13,10 +14,11 @@
   {
     "id": "ep01",
     "code": "EP01",
+    "folder": "EP01-mathematical-induction",
+    "deliverables": "EP01-mathematical-induction",
     "title": "Mathematical Induction",
     "topic": "Proof by induction · dominoes, base case, inductive step",
     "style": "Whiteboard",
-    "duration": 105.0,
     "rendered": "2026-11-12",
     "status": "Delivered",
     "notes": ["1080×1920 · 60 fps master, 540×960 here", "Single continuous diagram with camera moves", "Open item: scene 7 recursion claim has no source yet"]
