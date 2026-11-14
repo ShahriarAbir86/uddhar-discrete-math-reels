@@ -357,6 +357,11 @@ const server = http.createServer(async (req, res) => {
       if (b.target === "drivelocal") { if (cfg.driveLocalDir && fs.existsSync(cfg.driveLocalDir)) { openPath(cfg.driveLocalDir); return send(res, 200, { message: "Opened " + cfg.driveLocalDir }); } openUrl(cfg.driveUrl); return send(res, 200, { message: "Opened Drive in the browser." }); }
       return send(res, 400, { message: "Unknown target" });
     }
+    if (P === "/download/installer") {
+      const exe = E("dist", "Claude-Video-Maker-Setup.exe");
+      if (!fs.existsSync(exe)) { res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("Installer not built on this PC."); }
+      return serveFile(req, res, exe, { "content-disposition": 'attachment; filename="Claude-Video-Maker-Setup.exe"' });
+    }
     if (P.startsWith("/download/")) {
       const cfg = { ...rj(E("preview/config.json"), {}), ...rj(E("preview/config.local.json"), {}) };
       const del = cfg.deliverablesDir || path.join(path.dirname(ENGINE), "Deliverables");

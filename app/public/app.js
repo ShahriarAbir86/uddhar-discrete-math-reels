@@ -69,11 +69,12 @@ async function loadProject(id) { const r = await api("/api/project/" + id); P = 
 // ---------- shell ----------
 function renderRail() {
   const e = S.env || {}; const running = (S.running || []).length;
-  const items = [["home", "Projects", "home"], ["library", "Library", "lib"], ["desk", "Review Desk", "desk"], ["settings", "Settings", "cog"]];
+  const items = [["home", "Projects", "home"], ["library", "Library", "lib"], ["desk", "Review Desk", "desk"], ["guide", "Guide", "note"], ["settings", "Settings", "cog"]];
   $("#rail").innerHTML = `
     <div class="brand"><img src="logo.svg" alt="Uddhar"><div><b>Claude Video Maker</b><span>Version 1 · Uddhar</span></div></div>
     ${items.map(([k, l, i]) => `<button class="nav ${route.name === k || (k === "home" && ["composer", "result"].includes(route.name)) ? "on" : ""}" data-act="go" data-to="${k === "home" ? "" : k}">${ic(i)}<span>${l}</span></button>`).join("")}
     <div class="foot">
+      <div style="margin-bottom:8px;color:var(--cream);font-weight:600">Developed by Kajama Shahr</div>
       <div><i class="dot ${running ? "run" : e.claude ? "ok" : "bad"}"></i>${running ? "Generating…" : e.claude ? "Claude ready" : "Claude CLI missing"}</div>
       <div><i class="dot ${S.settings.gpu === "cpu" ? "" : e.nvidia ? "ok" : "bad"}"></i>GPU: ${esc(S.settings.gpu)}${e.nvidia ? " · RTX" : ""}</div>
       <div><i class="dot ${e.engineReady ? "ok" : "bad"}"></i>Engine ${e.engineReady ? "ready" : "not installed"}</div>
@@ -91,7 +92,7 @@ async function render() {
   try { await refresh(); } catch (e) { $("#view").innerHTML = `<div class="glass pane"><h2>App server not reachable</h2><p class="muted">${esc(e.message)}</p></div>`; return; }
   if (route.id) { try { const r = await loadProject(route.id); runInfo = r.run; } catch { P = null; return go(""); } } else P = null;
   renderRail();
-  const v = { home: viewHome, composer: viewComposer, result: viewResult, library: viewLibrary, desk: viewDesk, settings: viewSettings }[route.name] || viewHome;
+  const v = { home: viewHome, composer: viewComposer, result: viewResult, library: viewLibrary, desk: viewDesk, guide: viewGuide, settings: viewSettings }[route.name] || viewHome;
   v(); bindAll();
 }
 window.addEventListener("hashchange", render);
@@ -373,6 +374,7 @@ function editKit(id) {
 
 // ---------- settings + desk ----------
 function viewDesk() { $("#top").innerHTML = `<div class="grow"><h1>Review Desk</h1><div class="muted sm">The earlier preview app: all episodes, run summary, style comparison.</div></div>`; $("#view").style.padding = "0"; $("#view").innerHTML = `<iframe class="desk" src="/preview/"></iframe>`; }
+function viewGuide() { $("#top").innerHTML = `<div class="grow"><h1>Guide</h1><div class="muted sm">Install, features, how-to recipes and troubleshooting.</div></div><a class="btn" href="/download/installer">${ic("dl")} Download installer</a>`; $("#view").style.padding = "0"; $("#view").innerHTML = `<iframe class="desk" src="/guide.html"></iframe>`; }
 function viewSettings() {
   $("#view").style.padding = ""; const g = S.settings, e = S.env;
   $("#top").innerHTML = `<div class="grow"><h1>Settings</h1><div class="muted sm">Defaults for every project. A project can override engine options in its Composer.</div></div>`;
@@ -387,7 +389,7 @@ function viewSettings() {
     <div class="field"><label>Max run time (minutes)</label><input type="number" data-root="s" data-bind="maxMinutes" value="${g.maxMinutes}"></div>
     ${sw("gate", "Storyboard approval gate", "Stop at the storyboard and wait for your approval before building.")}${sw("keepLogs", "Keep run logs", "Saved in each version folder.")}${sw("autoExport", "Export automatically when a video finishes")}</div>
   <div class="col"><div class="glass pane col"><h2>Folders</h2>${fld("dataDir", "Data folder (projects, library, settings)")}${fld("exportDir", "Export folder")}${fld("driveDir", "Google Drive folder (optional)", "e.g. G:\\My Drive\\Uddhar")}${fld("claudePath", "Claude Code CLI path (optional)", "auto-detected")}<button class="btn" data-act="reveal" data-path="${esc(g.dataDir)}">${ic("folder")} Open data folder</button></div>
-  <div class="glass pane col"><h2>This PC</h2><div class="kv"><div><span class="xs muted">Claude Code</span><b style="font-size:14px">${esc(e.claudeVersion || (e.claude ? "found" : "missing"))}</b></div><div><span class="xs muted">Node</span><b style="font-size:14px">${esc(e.node)}</b></div><div><span class="xs muted">FFmpeg</span><b style="font-size:14px">${e.ffmpeg ? "found" : "missing"}</b></div><div><span class="xs muted">Git Bash</span><b style="font-size:14px">${e.bash ? "found" : "missing"}</b></div><div><span class="xs muted">Engine</span><b style="font-size:14px">${e.engineReady ? "ready" : "run npm install"}</b></div><div><span class="xs muted">App</span><b style="font-size:14px">v${esc(e.version)}</b></div></div>
+  <div class="glass pane col"><h2>This PC</h2><div class="kv"><div><span class="xs muted">Claude Code</span><b style="font-size:14px">${esc(e.claudeVersion || (e.claude ? "found" : "missing"))}</b></div><div><span class="xs muted">Node</span><b style="font-size:14px">${esc(e.node)}</b></div><div><span class="xs muted">FFmpeg</span><b style="font-size:14px">${e.ffmpeg ? "found" : "missing"}</b></div><div><span class="xs muted">Git Bash</span><b style="font-size:14px">${e.bash ? "found" : "missing"}</b></div><div><span class="xs muted">Engine</span><b style="font-size:14px">${e.engineReady ? "ready" : "run npm install"}</b></div><div><span class="xs muted">App</span><b style="font-size:14px">v${esc(e.version)} · by Kajama Shahr</b></div></div>
   <div class="row wrap"><button class="btn" data-act="update">Check for updates</button><button class="btn danger" data-act="quit">Quit app</button></div><div class="muted sm" style="word-break:break-all">Engine folder: ${esc(e.engine)}</div></div></div></div>`;
 }
 
