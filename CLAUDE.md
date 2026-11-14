@@ -61,3 +61,6 @@ List actual created files, actual render specs, actual QA checks performed, unre
 
 ## Rendering always uses the GPU
 Every render (draft or delivery) must use the GPU: `tools/hf.sh render ...` adds `--gpu` automatically (NVIDIA RTX 3050 NVENC). `hf.sh render` also re-applies the NVIDIA (GpuPreference=2) setting to every chrome-headless-shell exe before each render, so browser updates cannot drop it. The capture browsers (HyperFrames chrome-headless-shell, Playwright headless shell) are set to the high-performance GPU in Windows Graphics settings (HKCU UserGpuPreferences = GpuPreference=2). After a browser update the path changes: re-apply the setting and confirm with `nvidia-smi` during a render.
+
+## Claude Video Maker app
+`app/` holds "Claude Video Maker v1" (see `app/README.md`): a project-based desktop app that drives this repo through the Claude Code CLI. When it runs a generation it passes `UDDHAR_GPU` (nvidia default | auto | cpu) to `tools/hf.sh`, writes the brief to its own project folder, and expects `versions/vN/DONE.json` + `final.mp4`. Follow the brief file exactly; the user's choices (style, Light/Dark mode, storyboard gate) were already made in the app, so do not ask again.

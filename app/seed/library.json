@@ -1,0 +1,41 @@
+{
+  "styles": [
+    {
+      "id": "animation-story",
+      "name": "Animation Story",
+      "skill": "animation-story-style",
+      "spec": "styles/animation-story/STYLE_GUIDE.md",
+      "needsMode": true,
+      "modes": ["light", "dark"],
+      "rules": "Paper-cut documentary world, faceless orange hero, halftone sun and skyline, hard-offset cards, HUD, subtitle bar, official logo top-left, Navy end card. Orange #F2530F is the only accent.",
+      "thumb": "/preview/media/ep01d.jpg",
+      "thumbs": { "light": "/preview/media/ep02l.jpg", "dark": "/preview/media/ep01d.jpg" },
+      "desc": "Story, career and context reels with a character and a real-world setting. Light (brand cream) or Dark (brand navy), chosen per reel."
+    },
+    {
+      "id": "whiteboard",
+      "name": "Whiteboard",
+      "skill": "whiteboard-style",
+      "spec": "styles/whiteboard/WHITEBOARD_STYLE.md",
+      "needsMode": false,
+      "rules": "Navy marker on a clean white board, one continuous diagram with camera moves, picture before text, at most 7 visible words at a time.",
+      "thumb": "/preview/media/ep01.jpg",
+      "desc": "Discrete Mathematics concept explainers drawn on one continuous board."
+    }
+  ],
+  "brandKits": [
+    {
+      "id": "uddhar",
+      "name": "Uddhar",
+      "logo": "brand/assets/Uddhar_logo.svg",
+      "logoIcon": "brand/assets/Uddhar_logo.svg",
+      "colors": ["#101B49", "#F2530F", "#FFFFFF", "#FEEEE7", "#F6F6F7"],
+      "colorNames": ["Deep Navy", "Primary Orange", "White", "Light Cream", "Neutral"],
+      "fonts": ["Hind Siliguri (Bangla)", "Plus Jakarta Sans (Latin)"],
+      "logoPosition": "top-left",
+      "logoSize": 120,
+      "outro": "Navy end card with the official logo",
+      "desc": "Official Uddhar identity. Never redraw or recolor the logo."
+    }
+  ]
+}

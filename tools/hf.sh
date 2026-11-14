@@ -6,8 +6,10 @@ cd "$(dirname "$0")/.."
 export HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1 HYPERFRAMES_NO_UPDATE_CHECK=1
 # Policy: renders always use the NVIDIA RTX GPU (NVENC encode + high-performance GPU for the capture browser).
 args=("$@")
-if [ "${1:-}" = "render" ] && [[ " $* " != *" --gpu "* ]]; then args+=(--gpu); fi
-if [ "${1:-}" = "render" ]; then
+# Claude Video Maker can set UDDHAR_GPU=nvidia (default) | auto | cpu. Without it the rule above applies (NVIDIA).
+GPU_MODE="${UDDHAR_GPU:-nvidia}"
+if [ "${1:-}" = "render" ] && [ "$GPU_MODE" != "cpu" ] && [[ " $* " != *" --gpu "* ]]; then args+=(--gpu); fi
+if [ "${1:-}" = "render" ] && [ "$GPU_MODE" = "nvidia" ]; then
   # Force every chrome-headless-shell (capture browser) onto the NVIDIA GPU via the Windows per-app preference.
   powershell.exe -NoProfile -Command '
     $k="HKCU:\Software\Microsoft\DirectX\UserGpuPreferences"; if(-not(Test-Path $k)){New-Item $k -Force|Out-Null}

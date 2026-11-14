@@ -47,3 +47,4 @@ episodes/EP01-*story-dark/renders/
 episodes/EP01-*story-dark/src/assets/voiceover.mp3
 episodes/EP01-*story-dark/qa/render_*.log
 episodes/EP01-*story-dark/qa/render_*.time
+dist/
