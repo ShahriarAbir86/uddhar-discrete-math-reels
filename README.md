@@ -30,7 +30,7 @@ To produce an episode in Claude Code:
 ## Deliverables
 Rendered files (`renders/`, `*.mp4`) are **not** committed to Git. Final deliverables go to the Google Drive delivery folder:
 
-https://drive.google.com/drive/folders/1Mmm98hYrI8cpXG-LNCQqsnltz3N1HcAq
+https://drive.google.com/drive/folders/1L-l5LPTlUDMhgCyZJQJiH0R2E1si_gXj
 
 Per episode, upload into a subfolder named after the episode (e.g. `EP01-mathematical-induction/`):
 `final.mp4`, `subtitles.srt`, `keyframes_contact_sheet.png`, `storyboard.md`, `qa_report.md`.

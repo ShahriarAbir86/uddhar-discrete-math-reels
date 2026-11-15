@@ -47,7 +47,7 @@ Use `episodes/EPXX-short-topic-name/`. Never overwrite another episode. Keep sou
 
 ## Delivery
 Renders are git-ignored. Copy final deliverables (final MP4, SRT, keyframe contact sheet, storyboard, QA report) into the Google Drive delivery folder, in a subfolder named after the episode:
-https://drive.google.com/drive/folders/1Mmm98hYrI8cpXG-LNCQqsnltz3N1HcAq
+https://drive.google.com/drive/folders/1L-l5LPTlUDMhgCyZJQJiH0R2E1si_gXj  (account marketing@phitron.io, folder `Projects_Shahriar`; video work goes in its `Video Projects` subfolder, other project types get their own subfolders. Local mount: `H:/My Drive/Projects_Shahriar/Video Projects/<EP>`)
 If Google Drive for desktop is synced locally, copy to that synced folder; otherwise leave files in `renders/` and tell the user what to upload.
 
 ## Do not use (legacy references)
