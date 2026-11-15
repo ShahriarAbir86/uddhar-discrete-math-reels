@@ -22,7 +22,7 @@ const slug = (s) => String(s || "reel").toLowerCase().normalize("NFKD").replace(
 // ---------- settings + data dir ----------
 const BOOT = path.join(process.env.APPDATA || os.homedir(), "ClaudeVideoMaker", "boot.json"); // only remembers dataDir
 const DEFAULT_SETTINGS = {
-  port: 4180, dataDir: "", exportDir: "", driveDir: "",
+  port: 4180, dataDir: "", exportDir: "", driveDir: "", driveSub: "Video Projects", // exports go to <driveDir>\<driveSub>\<project>-vN
   gpu: "nvidia",            // nvidia | auto | cpu   (nvidia = force NVIDIA RTX for capture browser + NVENC)
   quality: "standard",      // draft | standard | high
   model: "", effort: "",    // empty = Claude Code defaults
@@ -246,7 +246,7 @@ function doExport(p, n) {
   const v = p.versions.find((x) => x.n === n && x.file); if (!v) throw new Error("No finished file for that version.");
   const src = path.join(PD(p.id), v.file);
   const targets = [path.join(settings.exportDir, slug(p.name) + "-v" + n)];
-  if (settings.driveDir && fs.existsSync(settings.driveDir)) targets.push(path.join(settings.driveDir, slug(p.name) + "-v" + n));
+  if (settings.driveDir && fs.existsSync(settings.driveDir)) targets.push(path.join(settings.driveDir, settings.driveSub || "", slug(p.name) + "-v" + n));
   for (const t of targets) {
     fs.mkdirSync(t, { recursive: true });
     fs.copyFileSync(src, path.join(t, slug(p.name) + "-v" + n + ".mp4"));
