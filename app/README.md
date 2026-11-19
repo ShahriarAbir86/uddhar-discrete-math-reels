@@ -32,3 +32,6 @@ The server listens on 127.0.0.1 only, checks the Host header, and API calls need
 
 ## Run from source
 `node app/server.mjs --open` (port 4180, `CVM_PORT` / `CVM_DATA` environment variables override port and data folder).
+
+## Why this exists
+Built to automate and smooth a marketing and content team's video workflow. Reel production used to mean manual briefs, scattered references and repeated renders. The app turns each reel into a project (brief, style, references, brand kit, audio), runs the generation through the Claude Code CLI with the same pipeline and GPU rules every time, keeps versions and revisions, and exports to the delivery folders, so a reel can be produced, revised and shipped without re-explaining the process. Companion app: [Uddhar Resource Hub](https://github.com/ShahriarAbir86/uddhar-resource-hub).
